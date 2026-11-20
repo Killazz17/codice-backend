@@ -1,0 +1,61 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Length 557 >>
+stream
+BT
+/F1 12 Tf
+16 TL
+50 800 Td
+T*
+(Programa del curso EIF411 - Dise\361o y Programaci\363n de Plataformas M\363viles) Tj
+T*
+T*
+(M\363dulo 1: Fundamentos de Android) Tj
+T*
+(1.1 Ciclo de vida de una Activity) Tj
+T*
+(   Objetivo: Explicar los estados de una Activity.) Tj
+T*
+(1.2 Jetpack Compose) Tj
+T*
+(   Objetivo: Construir pantallas declarativas con estado.) Tj
+T*
+T*
+(M\363dulo 2: Persistencia y red) Tj
+T*
+(2.1 Room) Tj
+T*
+(   Objetivo: Definir entidades y DAOs.) Tj
+T*
+(2.2 Consumo de APIs REST) Tj
+T*
+(   Objetivo: Usar Retrofit con corrutinas.) Tj
+T*
+ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000000338 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+946
+%%EOF

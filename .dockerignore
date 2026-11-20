@@ -1,0 +1,10 @@
+# Solo entra al contexto de build lo que copia el Dockerfile (gradle/, gradlew, *.gradle.kts y src/).
+.git
+.gradle/
+.idea/
+build/
+db/
+docs/
+postman/
+local.properties
+*.md

@@ -1,0 +1,4919 @@
+{
+  "coleccion": "Códice REST API",
+  "entorno": "produccion",
+  "baseUrl": "https://codice-api-771575174411.us-central1.run.app",
+  "generado": "2026-10-27T22:48:01.247Z",
+  "totales": {
+    "requests": 154,
+    "requests_fallidos": 0,
+    "aserciones": 839,
+    "aserciones_fallidas": 0,
+    "scripts_de_prueba": 308
+  },
+  "tiempos": {
+    "respuestaPromedioMs": 280,
+    "respuestaMinimaMs": 101,
+    "respuestaMaximaMs": 1531,
+    "primeraRespuestaMs": 1531,
+    "duracionSegundos": 56.2
+  },
+  "fallos": [],
+  "ejecuciones": [
+    {
+      "carpeta": "Auth",
+      "request": "Registrar profesor",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/auth/register",
+      "status": 201,
+      "tiempoMs": 1531,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 60 s: admite el arranque en frío)",
+          "ok": true
+        },
+        {
+          "nombre": "La respuesta de auth no expone password ni passwordHash",
+          "ok": true
+        },
+        {
+          "nombre": "Status 201",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        },
+        {
+          "nombre": "El cuerpo cumple el esquema del usuario",
+          "ok": true
+        },
+        {
+          "nombre": "El rol es ROLE_TEACHER y el correo es el enviado",
+          "ok": true
+        },
+        {
+          "nombre": "La respuesta no contiene password ni passwordHash",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Auth",
+      "request": "Registrar estudiante",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/auth/register",
+      "status": 201,
+      "tiempoMs": 271,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "La respuesta de auth no expone password ni passwordHash",
+          "ok": true
+        },
+        {
+          "nombre": "Status 201",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        },
+        {
+          "nombre": "El cuerpo cumple el esquema del usuario",
+          "ok": true
+        },
+        {
+          "nombre": "El rol es ROLE_STUDENT y el usuario está habilitado",
+          "ok": true
+        },
+        {
+          "nombre": "La respuesta no contiene password ni passwordHash",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Auth",
+      "request": "Registrar con correo duplicado (409)",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/auth/register",
+      "status": 409,
+      "tiempoMs": 623,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 409",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        },
+        {
+          "nombre": "El error nombra al correo repetido",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Auth",
+      "request": "Registrar con datos inválidos (400)",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/auth/register",
+      "status": 400,
+      "tiempoMs": 183,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 400",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        },
+        {
+          "nombre": "errors[] señala email, password",
+          "ok": true
+        },
+        {
+          "nombre": "errors[] trae el mensaje de cada campo",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Auth",
+      "request": "Login profesor",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/auth/login",
+      "status": 200,
+      "tiempoMs": 406,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "La respuesta de auth no expone password ni passwordHash",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        },
+        {
+          "nombre": "El cuerpo cumple el esquema AuthResponse",
+          "ok": true
+        },
+        {
+          "nombre": "tokenType es Bearer y el token vence en el futuro",
+          "ok": true
+        },
+        {
+          "nombre": "El usuario es el profesor registrado",
+          "ok": true
+        },
+        {
+          "nombre": "La respuesta no contiene password ni passwordHash",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Auth",
+      "request": "Login estudiante",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/auth/login",
+      "status": 200,
+      "tiempoMs": 339,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "La respuesta de auth no expone password ni passwordHash",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        },
+        {
+          "nombre": "El cuerpo cumple el esquema AuthResponse",
+          "ok": true
+        },
+        {
+          "nombre": "El usuario es el estudiante registrado",
+          "ok": true
+        },
+        {
+          "nombre": "La respuesta no contiene password ni passwordHash",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Auth",
+      "request": "Login con contraseña incorrecta (401)",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/auth/login",
+      "status": 401,
+      "tiempoMs": 308,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 401",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        },
+        {
+          "nombre": "El mensaje es: Credenciales inválidas",
+          "ok": true
+        },
+        {
+          "nombre": "No entrega ningún token",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Auth",
+      "request": "GET /auth/me con token (200)",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/auth/me",
+      "status": 200,
+      "tiempoMs": 269,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "La respuesta de auth no expone password ni passwordHash",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        },
+        {
+          "nombre": "El cuerpo cumple el esquema del usuario",
+          "ok": true
+        },
+        {
+          "nombre": "Devuelve al dueño del token",
+          "ok": true
+        },
+        {
+          "nombre": "La respuesta no contiene password ni passwordHash",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Auth",
+      "request": "GET /auth/me sin token (401)",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/auth/me",
+      "status": 401,
+      "tiempoMs": 173,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 401",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Pide autenticación",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Auth",
+      "request": "GET /auth/me con token manipulado (401)",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/auth/me",
+      "status": 401,
+      "tiempoMs": 175,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 401",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Cursos y Grupos",
+      "request": "Preparación: registrar al segundo profesor",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/auth/register",
+      "status": 201,
+      "tiempoMs": 284,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "La respuesta de auth no expone password ni passwordHash",
+          "ok": true
+        },
+        {
+          "nombre": "Status 201",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        },
+        {
+          "nombre": "El cuerpo cumple el esquema del usuario",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Cursos y Grupos",
+      "request": "Preparación: login del segundo profesor",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/auth/login",
+      "status": 200,
+      "tiempoMs": 269,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "La respuesta de auth no expone password ni passwordHash",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        },
+        {
+          "nombre": "El cuerpo cumple el esquema AuthResponse",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Cursos y Grupos",
+      "request": "1. Profesor crea un curso (201)",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos",
+      "status": 201,
+      "tiempoMs": 465,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El 201 trae el header Location con la URL del recurso",
+          "ok": true
+        },
+        {
+          "nombre": "Status 201",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Location apunta al recurso creado (/api/v1/cursos/{id})",
+          "ok": true
+        },
+        {
+          "nombre": "El cuerpo cumple el esquema del curso",
+          "ok": true
+        },
+        {
+          "nombre": "El profesor autenticado queda como dueño",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Cursos y Grupos",
+      "request": "2a. Profesor lista sus cursos (200)",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos",
+      "status": 200,
+      "tiempoMs": 299,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        },
+        {
+          "nombre": "El cuerpo cumple el esquema del listado de cursos",
+          "ok": true
+        },
+        {
+          "nombre": "Incluye el curso recién creado, todavía sin grupos",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Cursos y Grupos",
+      "request": "2b. Profesor obtiene el curso por id (200)",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos/42",
+      "status": 200,
+      "tiempoMs": 233,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        },
+        {
+          "nombre": "El cuerpo cumple el esquema del curso",
+          "ok": true
+        },
+        {
+          "nombre": "Es el curso creado",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Cursos y Grupos",
+      "request": "3. Profesor actualiza el curso con PATCH (200)",
+      "metodo": "PATCH",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos/42",
+      "status": 200,
+      "tiempoMs": 293,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        },
+        {
+          "nombre": "El cuerpo cumple el esquema del curso",
+          "ok": true
+        },
+        {
+          "nombre": "Cambió el nombre y no el código ni el color",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Cursos y Grupos",
+      "request": "4. Profesor crea un grupo (201)",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos/42/grupos",
+      "status": 201,
+      "tiempoMs": 404,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El 201 trae el header Location con la URL del recurso",
+          "ok": true
+        },
+        {
+          "nombre": "Status 201",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Location apunta al recurso creado (/api/v1/grupos/{id})",
+          "ok": true
+        },
+        {
+          "nombre": "El cuerpo cumple el esquema del grupo",
+          "ok": true
+        },
+        {
+          "nombre": "El código de invitación tiene el formato CURSO-NN-XXXX",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Cursos y Grupos",
+      "request": "5. Crear el mismo número de grupo otra vez (409)",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos/42/grupos",
+      "status": 409,
+      "tiempoMs": 270,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 409",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        },
+        {
+          "nombre": "El mensaje es: ya tiene un grupo 01",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Matrículas",
+      "request": "6. Estudiante se une con el código (201, PENDING)",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/matriculas",
+      "status": 201,
+      "tiempoMs": 390,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El 201 trae el header Location con la URL del recurso",
+          "ok": true
+        },
+        {
+          "nombre": "Status 201",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Location apunta al recurso creado (/api/v1/matriculas/{id})",
+          "ok": true
+        },
+        {
+          "nombre": "El cuerpo cumple el esquema de la matrícula",
+          "ok": true
+        },
+        {
+          "nombre": "Queda PENDING, en el grupo y para el estudiante",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Matrículas",
+      "request": "7. Estudiante se une otra vez (409)",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/matriculas",
+      "status": 409,
+      "tiempoMs": 245,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 409",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Matrículas",
+      "request": "8. Estudiante se une con un código inexistente (404)",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/matriculas",
+      "status": 404,
+      "tiempoMs": 164,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 404",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Matrículas",
+      "request": "9. Profesor lista las solicitudes ?estado=PENDIENTE (200)",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/grupos/33/matriculas?estado=PENDIENTE",
+      "status": 200,
+      "tiempoMs": 437,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        },
+        {
+          "nombre": "El cuerpo cumple el esquema de las solicitudes",
+          "ok": true
+        },
+        {
+          "nombre": "Contiene la solicitud del estudiante, solo con nombre y correo",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Matrículas",
+      "request": "10. Profesor aprueba la solicitud (200, ACTIVE)",
+      "metodo": "PATCH",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/matriculas/49",
+      "status": 200,
+      "tiempoMs": 352,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        },
+        {
+          "nombre": "El cuerpo cumple el esquema de la matrícula",
+          "ok": true
+        },
+        {
+          "nombre": "La matrícula queda ACTIVE y con fecha de resolución",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Matrículas",
+      "request": "11. Profesor intenta decidir otra vez (409)",
+      "metodo": "PATCH",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/matriculas/49",
+      "status": 409,
+      "tiempoMs": 194,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 409",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        },
+        {
+          "nombre": "El mensaje es: ya fue decidida",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Matrículas",
+      "request": "12. Estudiante lista sus cursos (200)",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos",
+      "status": 200,
+      "tiempoMs": 251,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        },
+        {
+          "nombre": "El cuerpo cumple el esquema del listado de cursos",
+          "ok": true
+        },
+        {
+          "nombre": "Incluye el curso donde quedó matriculado, con un grupo",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Matrículas",
+      "request": "13. Estudiante lista los grupos, sin código de invitación (200)",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos/42/grupos",
+      "status": 200,
+      "tiempoMs": 371,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        },
+        {
+          "nombre": "El grupo trae solo id, courseId, number y schedule",
+          "ok": true
+        },
+        {
+          "nombre": "El estudiante nunca recibe el código de invitación",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Matrículas",
+      "request": "14. Profesor regenera el código (200)",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/grupos/33/codigo",
+      "status": 200,
+      "tiempoMs": 248,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        },
+        {
+          "nombre": "El cuerpo cumple el esquema del grupo",
+          "ok": true
+        },
+        {
+          "nombre": "El código cambió",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Matrículas",
+      "request": "15. Estudiante intenta crear un curso (403)",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos",
+      "status": 403,
+      "tiempoMs": 220,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 403",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Matrículas",
+      "request": "16. Segundo profesor modifica el curso ajeno (403)",
+      "metodo": "PATCH",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos/42",
+      "status": 403,
+      "tiempoMs": 289,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 403",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Matrículas",
+      "request": "16b. El curso ajeno no cambió (200)",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos/42",
+      "status": 200,
+      "tiempoMs": 234,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        },
+        {
+          "nombre": "El nombre sigue siendo el del dueño",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-04 Temario, Apuntes y Cobertura / Preparación",
+      "request": "Registrar profesor",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/auth/signup",
+      "status": 201,
+      "tiempoMs": 371,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "La respuesta de auth no expone password ni passwordHash",
+          "ok": true
+        },
+        {
+          "nombre": "Status 201",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-04 Temario, Apuntes y Cobertura / Preparación",
+      "request": "Registrar estudiante A",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/auth/signup",
+      "status": 201,
+      "tiempoMs": 330,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "La respuesta de auth no expone password ni passwordHash",
+          "ok": true
+        },
+        {
+          "nombre": "Status 201",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-04 Temario, Apuntes y Cobertura / Preparación",
+      "request": "Registrar estudiante B",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/auth/signup",
+      "status": 201,
+      "tiempoMs": 275,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "La respuesta de auth no expone password ni passwordHash",
+          "ok": true
+        },
+        {
+          "nombre": "Status 201",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-04 Temario, Apuntes y Cobertura / Preparación",
+      "request": "Login profesor",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/v1/users/login",
+      "status": 200,
+      "tiempoMs": 362,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "Devuelve el token Bearer en el header Authorization",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-04 Temario, Apuntes y Cobertura / Preparación",
+      "request": "Login estudiante A",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/v1/users/login",
+      "status": 200,
+      "tiempoMs": 279,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "Devuelve el token Bearer en el header Authorization",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-04 Temario, Apuntes y Cobertura / Preparación",
+      "request": "Login estudiante B",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/v1/users/login",
+      "status": 200,
+      "tiempoMs": 248,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "Devuelve el token Bearer en el header Authorization",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-04 Temario, Apuntes y Cobertura / Preparación",
+      "request": "Crear curso",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/courses",
+      "status": 201,
+      "tiempoMs": 162,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El 201 trae el header Location con la URL del recurso",
+          "ok": true
+        },
+        {
+          "nombre": "Status 201",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-04 Temario, Apuntes y Cobertura / Preparación",
+      "request": "Crear grupo",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/groups",
+      "status": 201,
+      "tiempoMs": 259,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El 201 trae el header Location con la URL del recurso",
+          "ok": true
+        },
+        {
+          "nombre": "Status 201",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-04 Temario, Apuntes y Cobertura / Preparación",
+      "request": "Estudiante A solicita matrícula",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/enrollments",
+      "status": 201,
+      "tiempoMs": 281,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El 201 trae el header Location con la URL del recurso",
+          "ok": true
+        },
+        {
+          "nombre": "Status 201",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-04 Temario, Apuntes y Cobertura / Preparación",
+      "request": "Estudiante B solicita matrícula",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/enrollments",
+      "status": 201,
+      "tiempoMs": 234,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El 201 trae el header Location con la URL del recurso",
+          "ok": true
+        },
+        {
+          "nombre": "Status 201",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-04 Temario, Apuntes y Cobertura / Preparación",
+      "request": "Profesor aprueba a A",
+      "metodo": "PUT",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/enrollments/50/status",
+      "status": 200,
+      "tiempoMs": 244,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "Matrícula aprobada",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-04 Temario, Apuntes y Cobertura / Preparación",
+      "request": "Profesor aprueba a B",
+      "metodo": "PUT",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/enrollments/51/status",
+      "status": 200,
+      "tiempoMs": 173,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-04 Temario, Apuntes y Cobertura / Preparación",
+      "request": "Profesor crea módulo 4",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos/43/modulos",
+      "status": 201,
+      "tiempoMs": 325,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El 201 trae el header Location con la URL del recurso",
+          "ok": true
+        },
+        {
+          "nombre": "Status 201",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-04 Temario, Apuntes y Cobertura / Temario",
+      "request": "Estudiante lee el temario antes de publicar (404)",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos/43/temario",
+      "status": 404,
+      "tiempoMs": 284,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 404",
+          "ok": true
+        },
+        {
+          "nombre": "Cuerpo de error con status y mensaje",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-04 Temario, Apuntes y Cobertura / Temario",
+      "request": "Profesor crea subtema 4.1",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/modulos/24/subtemas",
+      "status": 201,
+      "tiempoMs": 292,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El 201 trae el header Location con la URL del recurso",
+          "ok": true
+        },
+        {
+          "nombre": "Status 201",
+          "ok": true
+        },
+        {
+          "nombre": "Header Location del recurso creado",
+          "ok": true
+        },
+        {
+          "nombre": "Subtema creado en su módulo",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-04 Temario, Apuntes y Cobertura / Temario",
+      "request": "Profesor crea subtema 4.2 (sin objetivos)",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/modulos/24/subtemas",
+      "status": 201,
+      "tiempoMs": 193,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El 201 trae el header Location con la URL del recurso",
+          "ok": true
+        },
+        {
+          "nombre": "Status 201",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-04 Temario, Apuntes y Cobertura / Temario",
+      "request": "Profesor crea objetivo en 4.1",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/subtemas/41/objetivos",
+      "status": 201,
+      "tiempoMs": 247,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El 201 trae el header Location con la URL del recurso",
+          "ok": true
+        },
+        {
+          "nombre": "Status 201",
+          "ok": true
+        },
+        {
+          "nombre": "Header Location del recurso creado",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-04 Temario, Apuntes y Cobertura / Temario",
+      "request": "Profesor publica el temario",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos/43/temario/publicar",
+      "status": 200,
+      "tiempoMs": 297,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "Queda publicado",
+          "ok": true
+        },
+        {
+          "nombre": "Advierte el subtema sin objetivos (4.2) y solo ese",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-04 Temario, Apuntes y Cobertura / Temario",
+      "request": "Estudiante lee el temario publicado",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos/43/temario",
+      "status": 200,
+      "tiempoMs": 573,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "Estructura anidada módulo → subtema → objetivos",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-04 Temario, Apuntes y Cobertura / Temario",
+      "request": "Estudiante intenta crear un subtema (403)",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/modulos/24/subtemas",
+      "status": 403,
+      "tiempoMs": 240,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 403",
+          "ok": true
+        },
+        {
+          "nombre": "Cuerpo de error con status y mensaje",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-04 Temario, Apuntes y Cobertura / Apuntes",
+      "request": "Estudiante A crea un apunte",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/apuntes",
+      "status": 201,
+      "tiempoMs": 433,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El 201 trae el header Location con la URL del recurso",
+          "ok": true
+        },
+        {
+          "nombre": "Status 201",
+          "ok": true
+        },
+        {
+          "nombre": "Header Location del recurso creado",
+          "ok": true
+        },
+        {
+          "nombre": "Apunte del estudiante, sin auditar",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-04 Temario, Apuntes y Cobertura / Apuntes",
+      "request": "Listar apuntes con q, subtemaId y paginación",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/apuntes?q=avl&subtemaId=41&page=0&size=5",
+      "status": 200,
+      "tiempoMs": 465,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "El cuerpo es un PageResponse",
+          "ok": true
+        },
+        {
+          "nombre": "Encuentra el apunte por texto, sin distinguir mayúsculas",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-04 Temario, Apuntes y Cobertura / Apuntes",
+      "request": "Paginación fuera de rango (400)",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/apuntes?size=101",
+      "status": 400,
+      "tiempoMs": 345,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 400",
+          "ok": true
+        },
+        {
+          "nombre": "Cuerpo de error con status y mensaje",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-04 Temario, Apuntes y Cobertura / Apuntes",
+      "request": "Obtener el apunte propio",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/apuntes/36",
+      "status": 200,
+      "tiempoMs": 304,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "Es el apunte creado",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-04 Temario, Apuntes y Cobertura / Apuntes",
+      "request": "Actualizar el apunte propio",
+      "metodo": "PATCH",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/apuntes/36",
+      "status": 200,
+      "tiempoMs": 212,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "Texto actualizado",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-04 Temario, Apuntes y Cobertura / Apuntes",
+      "request": "Estudiante B pide el apunte de A (403)",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/apuntes/36",
+      "status": 403,
+      "tiempoMs": 246,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 403",
+          "ok": true
+        },
+        {
+          "nombre": "Cuerpo de error con status y mensaje",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-04 Temario, Apuntes y Cobertura / Apuntes",
+      "request": "Profesor pide un apunte individual (403)",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/apuntes/36",
+      "status": 403,
+      "tiempoMs": 233,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 403",
+          "ok": true
+        },
+        {
+          "nombre": "Cuerpo de error con status y mensaje",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-04 Temario, Apuntes y Cobertura / Cobertura",
+      "request": "Estudiante A audita su apunte (stub): 4.1 cubierto",
+      "metodo": "PUT",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/apuntes/36/auditoria",
+      "status": 200,
+      "tiempoMs": 530,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "4.1 queda COVERED",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-04 Temario, Apuntes y Cobertura / Cobertura",
+      "request": "Estudiante B crea un apunte de 4.1",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/apuntes",
+      "status": 201,
+      "tiempoMs": 296,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El 201 trae el header Location con la URL del recurso",
+          "ok": true
+        },
+        {
+          "nombre": "Status 201",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-04 Temario, Apuntes y Cobertura / Cobertura",
+      "request": "Estudiante B audita su apunte (stub): 4.1 parcial",
+      "metodo": "PUT",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/apuntes/37/auditoria",
+      "status": 200,
+      "tiempoMs": 270,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-04 Temario, Apuntes y Cobertura / Cobertura",
+      "request": "Cobertura personal de A",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/grupos/34/cobertura/mia",
+      "status": 200,
+      "tiempoMs": 353,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "Estados por subtema (COVERED / PARTIAL / NO_NOTES)",
+          "ok": true
+        },
+        {
+          "nombre": "1 de 2 subtemas cubiertos = 50 %",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-04 Temario, Apuntes y Cobertura / Cobertura",
+      "request": "Cobertura del grupo (profesor)",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/grupos/34/cobertura",
+      "status": 200,
+      "tiempoMs": 334,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "2 estudiantes aprobados",
+          "ok": true
+        },
+        {
+          "nombre": "4.1: 1 cubierto y 1 parcial de 2 = 50 % / 50 % / 0 %",
+          "ok": true
+        },
+        {
+          "nombre": "4.2: nadie tiene apuntes = 100 % sin apuntes",
+          "ok": true
+        },
+        {
+          "nombre": "Anónima: ninguna clave identifica a un estudiante",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-04 Temario, Apuntes y Cobertura / Cobertura",
+      "request": "Estudiante pide la cobertura del grupo (403)",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/grupos/34/cobertura",
+      "status": 403,
+      "tiempoMs": 204,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 403",
+          "ok": true
+        },
+        {
+          "nombre": "Cuerpo de error con status y mensaje",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-04 Temario, Apuntes y Cobertura / Cobertura",
+      "request": "Eliminar el apunte",
+      "metodo": "DELETE",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/apuntes/36",
+      "status": 204,
+      "tiempoMs": 278,
+      "aserciones": [
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 204",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-04 Temario, Apuntes y Cobertura / Cobertura",
+      "request": "El apunte eliminado ya no existe (404)",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/apuntes/36",
+      "status": 404,
+      "tiempoMs": 252,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 404",
+          "ok": true
+        },
+        {
+          "nombre": "Cuerpo de error con status y mensaje",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 400 Bad Request",
+      "request": "Curso inválido (código, nombre y color)",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos",
+      "status": 400,
+      "tiempoMs": 129,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 400",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        },
+        {
+          "nombre": "errors[] señala code, name, color",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 400 Bad Request",
+      "request": "Grupo inválido (número 0 y periodo vacío)",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos/43/grupos",
+      "status": 400,
+      "tiempoMs": 156,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 400",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        },
+        {
+          "nombre": "errors[] señala number, period",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 400 Bad Request",
+      "request": "Matrícula con código mal formado",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/matriculas",
+      "status": 400,
+      "tiempoMs": 145,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 400",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        },
+        {
+          "nombre": "errors[] señala inviteCode",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 400 Bad Request",
+      "request": "Módulo inválido (cuerpo vacío)",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos/43/modulos",
+      "status": 400,
+      "tiempoMs": 164,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 400",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 400 Bad Request",
+      "request": "Subtema inválido (cuerpo vacío)",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/modulos/24/subtemas",
+      "status": 400,
+      "tiempoMs": 158,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 400",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 400 Bad Request",
+      "request": "Objetivo inválido (cuerpo vacío)",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/subtemas/41/objetivos",
+      "status": 400,
+      "tiempoMs": 200,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 400",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 400 Bad Request",
+      "request": "Apunte inválido (texto confirmado en blanco)",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/apuntes",
+      "status": 400,
+      "tiempoMs": 189,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 400",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        },
+        {
+          "nombre": "errors[] señala confirmedText",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 400 Bad Request",
+      "request": "JSON mal formado",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos",
+      "status": 400,
+      "tiempoMs": 174,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 400",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        },
+        {
+          "nombre": "El mensaje es: mal formado",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 400 Bad Request",
+      "request": "size=1000 fuera de rango",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/apuntes?size=1000",
+      "status": 400,
+      "tiempoMs": 360,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 400",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 400 Bad Request",
+      "request": "page=-1 fuera de rango",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/apuntes?page=-1",
+      "status": 400,
+      "tiempoMs": 218,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 400",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 400 Bad Request",
+      "request": "Estado inválido en ?estado=",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/grupos/34/matriculas?estado=OTRO",
+      "status": 400,
+      "tiempoMs": 249,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 400",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        },
+        {
+          "nombre": "errors[] explica los estados válidos",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 401 Unauthorized",
+      "request": "Sin header Authorization",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos",
+      "status": 401,
+      "tiempoMs": 237,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 401",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 401 Unauthorized",
+      "request": "Token manipulado",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos",
+      "status": 401,
+      "tiempoMs": 200,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 401",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 401 Unauthorized",
+      "request": "Token expirado (fijo)",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos",
+      "status": 401,
+      "tiempoMs": 135,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 401",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 403 Forbidden",
+      "request": "Estudiante crea un grupo",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos/43/grupos",
+      "status": 403,
+      "tiempoMs": 163,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 403",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 403 Forbidden",
+      "request": "Estudiante lista las solicitudes del grupo",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/grupos/34/matriculas",
+      "status": 403,
+      "tiempoMs": 239,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 403",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 403 Forbidden",
+      "request": "Estudiante decide una matrícula",
+      "metodo": "PATCH",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/matriculas/50",
+      "status": 403,
+      "tiempoMs": 171,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 403",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 403 Forbidden",
+      "request": "Estudiante crea un módulo del temario",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos/43/modulos",
+      "status": 403,
+      "tiempoMs": 163,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 403",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 403 Forbidden",
+      "request": "Profesor se une a un grupo",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/matriculas",
+      "status": 403,
+      "tiempoMs": 188,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 403",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 403 Forbidden",
+      "request": "Profesor lista sus matrículas",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/matriculas/mias",
+      "status": 403,
+      "tiempoMs": 283,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 403",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 403 Forbidden",
+      "request": "Profesor pide su cobertura personal",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/grupos/34/cobertura/mia",
+      "status": 403,
+      "tiempoMs": 274,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 403",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 403 Forbidden",
+      "request": "Profesor ajeno elimina el curso de otro",
+      "metodo": "DELETE",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos/43",
+      "status": 403,
+      "tiempoMs": 176,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 403",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 403 Forbidden",
+      "request": "Profesor ajeno modifica el grupo de otro",
+      "metodo": "PATCH",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/grupos/34",
+      "status": 403,
+      "tiempoMs": 200,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 403",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 403 Forbidden",
+      "request": "Profesor ajeno decide la matrícula de otro",
+      "metodo": "PATCH",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/matriculas/50",
+      "status": 403,
+      "tiempoMs": 180,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 403",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 403 Forbidden",
+      "request": "Estudiante pide el apunte de otro estudiante",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/apuntes/37",
+      "status": 403,
+      "tiempoMs": 261,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 403",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 404 Not Found",
+      "request": "Curso inexistente",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos/999999999",
+      "status": 404,
+      "tiempoMs": 256,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 404",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 404 Not Found",
+      "request": "Grupo inexistente",
+      "metodo": "PATCH",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/grupos/999999999",
+      "status": 404,
+      "tiempoMs": 166,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 404",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 404 Not Found",
+      "request": "Matrícula inexistente",
+      "metodo": "PATCH",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/matriculas/999999999",
+      "status": 404,
+      "tiempoMs": 187,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 404",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 404 Not Found",
+      "request": "Subtema inexistente",
+      "metodo": "PATCH",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/subtemas/999999999",
+      "status": 404,
+      "tiempoMs": 194,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 404",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 404 Not Found",
+      "request": "Objetivo inexistente",
+      "metodo": "PATCH",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/objetivos/999999999",
+      "status": 404,
+      "tiempoMs": 200,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 404",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 404 Not Found",
+      "request": "Apunte inexistente",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/apuntes/999999999",
+      "status": 404,
+      "tiempoMs": 241,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 404",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 405, 406 y 415",
+      "request": "405 Verbo no soportado: DELETE /api/v1/auth/login",
+      "metodo": "DELETE",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/auth/login",
+      "status": 405,
+      "tiempoMs": 163,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 405",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 405, 406 y 415",
+      "request": "406 Accept: application/xml",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos",
+      "status": 406,
+      "tiempoMs": 259,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 406",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 405, 406 y 415",
+      "request": "415 Content-Type: text/plain en un POST",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos",
+      "status": 415,
+      "tiempoMs": 118,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 415",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 409 Conflict",
+      "request": "Correo duplicado",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/auth/register",
+      "status": 409,
+      "tiempoMs": 131,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 409",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 409 Conflict",
+      "request": "Número de grupo duplicado",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos/43/grupos",
+      "status": 409,
+      "tiempoMs": 154,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 409",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 409 Conflict",
+      "request": "Matrícula duplicada",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/matriculas",
+      "status": 409,
+      "tiempoMs": 191,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 409",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 409 Conflict",
+      "request": "Código de curso duplicado",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos",
+      "status": 409,
+      "tiempoMs": 150,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 409",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 422 Unprocessable Entity",
+      "request": "Eliminar un subtema que tiene apuntes",
+      "metodo": "DELETE",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/subtemas/41",
+      "status": 422,
+      "tiempoMs": 157,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 422",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 422 Unprocessable Entity",
+      "request": "Preparación: crear un curso sin temario",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos",
+      "status": 201,
+      "tiempoMs": 173,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El 201 trae el header Location con la URL del recurso",
+          "ok": true
+        },
+        {
+          "nombre": "Status 201",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 422 Unprocessable Entity",
+      "request": "Publicar un temario sin subtemas",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos/44/temario/publicar",
+      "status": 422,
+      "tiempoMs": 146,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 422",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / 422 Unprocessable Entity",
+      "request": "Eliminar un curso con estudiantes matriculados",
+      "metodo": "DELETE",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos/43",
+      "status": 422,
+      "tiempoMs": 145,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 422",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / Headers",
+      "request": "CORS: OPTIONS con Origin",
+      "metodo": "OPTIONS",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos",
+      "status": 200,
+      "tiempoMs": 101,
+      "aserciones": [
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "Access-Control-Allow-Origin es el origen permitido",
+          "ok": true
+        },
+        {
+          "nombre": "Access-Control-Allow-Methods incluye POST",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / Headers",
+      "request": "CORS: un origen no permitido no recibe Access-Control-Allow-Origin",
+      "metodo": "OPTIONS",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos",
+      "status": 403,
+      "tiempoMs": 106,
+      "aserciones": [
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 403: el preflight de un origen ajeno se rechaza",
+          "ok": true
+        },
+        {
+          "nombre": "No se concede el origen ajeno",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "Casos negativos / Headers",
+      "request": "Las rutas protegidas exigen Authorization: Bearer",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/matriculas/mias",
+      "status": 401,
+      "tiempoMs": 231,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 401",
+          "ok": true
+        },
+        {
+          "nombre": "Content-Type contiene application/json",
+          "ok": true
+        },
+        {
+          "nombre": "La respuesta es del filtro de seguridad, en JSON",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / Preparación",
+      "request": "Registrar profesor",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/auth/signup",
+      "status": 201,
+      "tiempoMs": 276,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "La respuesta de auth no expone password ni passwordHash",
+          "ok": true
+        },
+        {
+          "nombre": "Status 201",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / Preparación",
+      "request": "Registrar estudiante A",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/auth/signup",
+      "status": 201,
+      "tiempoMs": 410,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "La respuesta de auth no expone password ni passwordHash",
+          "ok": true
+        },
+        {
+          "nombre": "Status 201",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / Preparación",
+      "request": "Registrar estudiante B",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/auth/signup",
+      "status": 201,
+      "tiempoMs": 424,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "La respuesta de auth no expone password ni passwordHash",
+          "ok": true
+        },
+        {
+          "nombre": "Status 201",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / Preparación",
+      "request": "Login profesor",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/v1/users/login",
+      "status": 200,
+      "tiempoMs": 233,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "Devuelve el token Bearer en el header Authorization",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / Preparación",
+      "request": "Login estudiante A",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/v1/users/login",
+      "status": 200,
+      "tiempoMs": 227,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "Devuelve el token Bearer en el header Authorization",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / Preparación",
+      "request": "Login estudiante B",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/v1/users/login",
+      "status": 200,
+      "tiempoMs": 325,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "Devuelve el token Bearer en el header Authorization",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / Preparación",
+      "request": "Crear curso",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/courses",
+      "status": 201,
+      "tiempoMs": 146,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El 201 trae el header Location con la URL del recurso",
+          "ok": true
+        },
+        {
+          "nombre": "Status 201",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / Preparación",
+      "request": "Crear grupo",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/groups",
+      "status": 201,
+      "tiempoMs": 196,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El 201 trae el header Location con la URL del recurso",
+          "ok": true
+        },
+        {
+          "nombre": "Status 201",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / Preparación",
+      "request": "Estudiante A solicita matrícula",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/enrollments",
+      "status": 201,
+      "tiempoMs": 165,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El 201 trae el header Location con la URL del recurso",
+          "ok": true
+        },
+        {
+          "nombre": "Status 201",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / Preparación",
+      "request": "Estudiante B solicita matrícula",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/enrollments",
+      "status": 201,
+      "tiempoMs": 188,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El 201 trae el header Location con la URL del recurso",
+          "ok": true
+        },
+        {
+          "nombre": "Status 201",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / Preparación",
+      "request": "Profesor aprueba a A",
+      "metodo": "PUT",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/enrollments/52/status",
+      "status": 200,
+      "tiempoMs": 176,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "Matrícula aprobada",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / Preparación",
+      "request": "Profesor aprueba a B",
+      "metodo": "PUT",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/enrollments/53/status",
+      "status": 200,
+      "tiempoMs": 189,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / Preparación",
+      "request": "Profesor crea módulo 4",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos/45/modulos",
+      "status": 201,
+      "tiempoMs": 197,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El 201 trae el header Location con la URL del recurso",
+          "ok": true
+        },
+        {
+          "nombre": "Status 201",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / Preparación",
+      "request": "Profesor crea el subtema 4.1",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/modulos/25/subtemas",
+      "status": 201,
+      "tiempoMs": 207,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El 201 trae el header Location con la URL del recurso",
+          "ok": true
+        },
+        {
+          "nombre": "Status 201",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / Preparación",
+      "request": "Profesor agrega el objetivo del subtema",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/subtemas/43/objetivos",
+      "status": 201,
+      "tiempoMs": 225,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El 201 trae el header Location con la URL del recurso",
+          "ok": true
+        },
+        {
+          "nombre": "Status 201",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / Seguridad JWT",
+      "request": "El token del login es un JWT con usuario, rol y vencimiento",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/auth/me",
+      "status": 200,
+      "tiempoMs": 244,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "La respuesta de auth no expone password ni passwordHash",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "El perfil es el del estudiante del token",
+          "ok": true
+        },
+        {
+          "nombre": "El token es un JWT de tres partes",
+          "ok": true
+        },
+        {
+          "nombre": "El JWT lleva el usuario (sub), el rol y un vencimiento futuro",
+          "ok": true
+        },
+        {
+          "nombre": "El JWT no lleva la contraseña",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / Seguridad JWT",
+      "request": "Sin token responde 401",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/auth/me",
+      "status": 401,
+      "tiempoMs": 123,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 401",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / Seguridad JWT",
+      "request": "Token con el rol manipulado responde 401",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/auth/me",
+      "status": 401,
+      "tiempoMs": 150,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 401",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / Seguridad JWT",
+      "request": "Token vencido y con firma ajena responde 401",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/auth/me",
+      "status": 401,
+      "tiempoMs": 147,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 401",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / Seguridad JWT",
+      "request": "Rol incorrecto: un estudiante no crea cursos (403)",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/courses",
+      "status": 403,
+      "tiempoMs": 132,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 403",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / Seguridad JWT",
+      "request": "Rol incorrecto: un profesor no genera repasos (403)",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/repasos/generar",
+      "status": 403,
+      "tiempoMs": 170,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 60 s: llamada a la IA)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 403",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / Seguridad JWT",
+      "request": "Rol incorrecto: un profesor no audita apuntes (403)",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/apuntes/1/auditar",
+      "status": 403,
+      "tiempoMs": 214,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 60 s: llamada a la IA)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 403",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / IA con Gemini",
+      "request": "Profesor extrae el temario del PDF",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos/45/temario/extraer",
+      "status": 200,
+      "tiempoMs": 1436,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 60 s: llamada a la IA)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "El árbol trae quién lo generó y con qué prompt",
+          "ok": true
+        },
+        {
+          "nombre": "Propone al menos un módulo con subtemas, objetivos y la confianza de cada nodo",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / IA con Gemini",
+      "request": "La extracción no publica nada",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos/45/temario",
+      "status": 200,
+      "tiempoMs": 173,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "El temario sigue sin publicar",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / IA con Gemini",
+      "request": "Un estudiante no puede extraer el temario (403)",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos/45/temario/extraer",
+      "status": 403,
+      "tiempoMs": 170,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 60 s: llamada a la IA)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 403",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / IA con Gemini",
+      "request": "Un archivo que no es PDF se rechaza (400)",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/cursos/45/temario/extraer",
+      "status": 400,
+      "tiempoMs": 206,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 60 s: llamada a la IA)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 400",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / IA con Gemini",
+      "request": "Estudiante transcribe la foto de un apunte",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/apuntes/extraer",
+      "status": 200,
+      "tiempoMs": 1346,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 60 s: llamada a la IA)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "Dice quién transcribió, con qué modelo y qué versión de prompt",
+          "ok": true
+        },
+        {
+          "nombre": "Los bloques traen texto, confianza entre 0 y 1 y la marca de revisión",
+          "ok": true
+        },
+        {
+          "nombre": "La IA leyó el contenido de la foto (menciona AVL)",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / IA con Gemini",
+      "request": "Un PDF no es una foto de apunte (400)",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/apuntes/extraer",
+      "status": 400,
+      "tiempoMs": 140,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 60 s: llamada a la IA)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 400",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / IA con Gemini",
+      "request": "Estudiante crea el apunte con el texto ya confirmado",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/apuntes",
+      "status": 201,
+      "tiempoMs": 152,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El 201 trae el header Location con la URL del recurso",
+          "ok": true
+        },
+        {
+          "nombre": "Status 201",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / IA con Gemini",
+      "request": "Transcribir sobre el apunte no confirma el texto",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/apuntes/38/transcripcion",
+      "status": 200,
+      "tiempoMs": 1243,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 60 s: llamada a la IA)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "El texto confirmado por el estudiante no cambia",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / IA con Gemini",
+      "request": "Otro estudiante no puede transcribir un apunte ajeno (403)",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/apuntes/38/transcripcion",
+      "status": 403,
+      "tiempoMs": 331,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 60 s: llamada a la IA)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 403",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / IA con Gemini",
+      "request": "Estudiante audita el apunte con IA",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/apuntes/38/auditar",
+      "status": 200,
+      "tiempoMs": 923,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 60 s: llamada a la IA)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "Devuelve un veredicto por subtema con un estado válido",
+          "ok": true
+        },
+        {
+          "nombre": "El apunte de AVL deja el subtema con cobertura (COVERED o PARTIAL)",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / IA con Gemini",
+      "request": "Otro estudiante no puede auditar un apunte ajeno (403)",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/apuntes/38/auditar",
+      "status": 403,
+      "tiempoMs": 185,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 60 s: llamada a la IA)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 403",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / IA con Gemini",
+      "request": "La cobertura personal refleja la auditoría",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/grupos/35/cobertura/mia",
+      "status": 200,
+      "tiempoMs": 299,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "La cobertura personal refleja la auditoría: el subtema ya no está sin apuntes",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / IA con Gemini",
+      "request": "Se crea un apunte sin texto confirmado",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/apuntes",
+      "status": 201,
+      "tiempoMs": 154,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El 201 trae el header Location con la URL del recurso",
+          "ok": true
+        },
+        {
+          "nombre": "Status 201",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / IA con Gemini",
+      "request": "Auditar ese apunte sin texto confirmado responde 422",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/apuntes/39/auditar",
+      "status": 422,
+      "tiempoMs": 157,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 60 s: llamada a la IA)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 422",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / IA con Gemini",
+      "request": "La IA genera un repaso por cada vacío de cobertura",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/repasos/generar",
+      "status": 201,
+      "tiempoMs": 1092,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 60 s: llamada a la IA)",
+          "ok": true
+        },
+        {
+          "nombre": "El 201 trae el header Location con la URL del recurso",
+          "ok": true
+        },
+        {
+          "nombre": "Status 201",
+          "ok": true
+        },
+        {
+          "nombre": "Trae Location hacia los repasos pendientes",
+          "ok": true
+        },
+        {
+          "nombre": "Es una lista; cada repaso trae una pregunta de opción múltiple y su origen",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / IA con Gemini",
+      "request": "Generar otra vez no duplica los repasos",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/repasos/generar",
+      "status": 201,
+      "tiempoMs": 176,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 60 s: llamada a la IA)",
+          "ok": true
+        },
+        {
+          "nombre": "El 201 trae el header Location con la URL del recurso",
+          "ok": true
+        },
+        {
+          "nombre": "Status 201",
+          "ok": true
+        },
+        {
+          "nombre": "Con repaso ya creado no se genera otro",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / IA con Gemini",
+      "request": "Repasos pendientes: lo nuevo vence mañana, no hoy",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/repasos/pendientes",
+      "status": 200,
+      "tiempoMs": 240,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "Status 200",
+          "ok": true
+        },
+        {
+          "nombre": "Es una lista y lo recién generado no aparece todavía",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / IA con Gemini",
+      "request": "Un profesor no ve repasos (403)",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/repasos/pendientes",
+      "status": 403,
+      "tiempoMs": 139,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 403",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / IA con Gemini",
+      "request": "Sin token no se ven repasos (401)",
+      "metodo": "GET",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/repasos/pendientes",
+      "status": 401,
+      "tiempoMs": 193,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 401",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / IA con Gemini",
+      "request": "Un resultado inválido responde 400",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/repasos/7/resultado",
+      "status": 400,
+      "tiempoMs": 198,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 400",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / IA con Gemini",
+      "request": "Aprobar un repaso que todavía no vence responde 422",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/repasos/7/resultado",
+      "status": 422,
+      "tiempoMs": 156,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 422",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "carpeta": "PM-07 Seguridad JWT e IA / IA con Gemini",
+      "request": "Otro estudiante no puede registrar el resultado de un repaso ajeno (403)",
+      "metodo": "POST",
+      "url": "https://codice-api-771575174411.us-central1.run.app/api/v1/repasos/7/resultado",
+      "status": 403,
+      "tiempoMs": 180,
+      "aserciones": [
+        {
+          "nombre": "Content-Type es application/json",
+          "ok": true
+        },
+        {
+          "nombre": "Tiempo de respuesta razonable (< 10 s)",
+          "ok": true
+        },
+        {
+          "nombre": "El error cumple el esquema ErrorResponse y su status coincide con el HTTP",
+          "ok": true
+        },
+        {
+          "nombre": "El error no expone trazas ni nombres de clases internas",
+          "ok": true
+        },
+        {
+          "nombre": "Status 403",
+          "ok": true
+        }
+      ]
+    }
+  ]
+}

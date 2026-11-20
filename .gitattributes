@@ -1,0 +1,3 @@
+# Scripts de shell siempre con LF, aunque Git en Windows convierta el resto a CRLF.
+gradlew text eol=lf
+*.sh text eol=lf

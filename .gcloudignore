@@ -1,0 +1,17 @@
+# Lo que NO se sube a Cloud Build con `gcloud run deploy --source`.
+# Igual que .dockerignore: el Dockerfile solo copia gradle/, gradlew, *.gradle.kts y src/.
+# Las carpetas van ancladas a la raíz con "/": sin eso, "db/" también excluía src/main/resources/db/migration
+# y Flyway arrancaba en Cloud Run sin migraciones.
+.gcloudignore
+.git
+.gitignore
+/.gradle/
+/.idea/
+/build/
+/db/
+/docs/
+/postman/
+/.postman/
+/scripts/
+local.properties
+*.md

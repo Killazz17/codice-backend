@@ -1,0 +1,26 @@
+# Base PostgreSQL local de Códice en Docker (alternativa a instalar PostgreSQL o usar pgAdmin).
+# La primera vez que arranca, PostgreSQL ejecuta en orden los .sql de /docker-entrypoint-initdb.d:
+# primero el esquema v6 y después los datos de prueba, así la base nace completa.
+#
+#   DB_PASSWORD=<contraseña> docker compose up -d
+#
+# El backend se conecta con el perfil dev (localhost:5432/codice, usuario codice, DB_PASSWORD).
+# Para empezar de cero: docker compose down -v (borra el volumen con los datos).
+services:
+  db:
+    image: postgres:16
+    container_name: codice-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: codice
+      POSTGRES_USER: codice
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?Definir DB_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - codice-data:/var/lib/postgresql/data
+      - ./db/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ./db/seed.sql:/docker-entrypoint-initdb.d/02-seed.sql:ro
+
+volumes:
+  codice-data:

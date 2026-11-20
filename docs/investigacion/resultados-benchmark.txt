@@ -1,0 +1,106 @@
+DROP TABLE
+CREATE TABLE
+INSERT 0 200000
+CREATE TABLE
+INSERT 0 500000
+CREATE INDEX
+CREATE INDEX
+ANALYZE
+ANALYZE
+                                                         QUERY PLAN                                                         
+----------------------------------------------------------------------------------------------------------------------------
+ Gather  (cost=1000.00..9736.67 rows=20 width=8) (actual time=1.272..57.205 rows=310.00 loops=1)
+   Workers Planned: 2
+   Workers Launched: 2
+   Buffers: shared hit=7693
+   ->  Parallel Seq Scan on bench_note  (cost=0.00..8734.67 rows=8 width=8) (actual time=0.689..38.070 rows=103.33 loops=3)
+         Filter: (audit @> '{"verdicts": [{"verdict": "COVERED", "subtopic": 42}]}'::jsonb)
+         Rows Removed by Filter: 66563
+         Buffers: shared hit=7693
+ Planning:
+   Buffers: shared hit=19
+ Planning Time: 0.238 ms
+ Execution Time: 57.233 ms
+(12 filas)
+
+CREATE INDEX
+ANALYZE
+                                                          QUERY PLAN                                                           
+-------------------------------------------------------------------------------------------------------------------------------
+ Bitmap Heap Scan on bench_note  (cost=80.59..157.78 rows=20 width=8) (actual time=3.929..4.651 rows=310.00 loops=1)
+   Recheck Cond: (audit @> '{"verdicts": [{"verdict": "COVERED", "subtopic": 42}]}'::jsonb)
+   Rows Removed by Index Recheck: 391
+   Heap Blocks: exact=671
+   Buffers: shared hit=870
+   ->  Bitmap Index Scan on idx_bench_audit  (cost=0.00..80.59 rows=20 width=0) (actual time=3.860..3.860 rows=701.00 loops=1)
+         Index Cond: (audit @> '{"verdicts": [{"verdict": "COVERED", "subtopic": 42}]}'::jsonb)
+         Index Searches: 1
+         Buffers: shared hit=199
+ Planning:
+   Buffers: shared hit=25
+ Planning Time: 0.251 ms
+ Execution Time: 4.677 ms
+(13 filas)
+
+                                                                       QUERY PLAN                                                                       
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+ HashAggregate  (cost=960.24..963.30 rows=306 width=8) (actual time=0.335..0.355 rows=310.00 loops=1)
+   Group Key: note_id
+   Batches: 1  Memory Usage: 48kB
+   Buffers: shared hit=294 read=4
+   ->  Bitmap Heap Scan on bench_finding  (cost=7.56..959.48 rows=306 width=8) (actual time=0.095..0.288 rows=311.00 loops=1)
+         Recheck Cond: ((subtopic = 42) AND ((verdict)::text = 'COVERED'::text))
+         Heap Blocks: exact=294
+         Buffers: shared hit=294 read=4
+         ->  Bitmap Index Scan on bench_finding_subtopic_verdict_idx  (cost=0.00..7.48 rows=306 width=0) (actual time=0.061..0.061 rows=311.00 loops=1)
+               Index Cond: ((subtopic = 42) AND ((verdict)::text = 'COVERED'::text))
+               Index Searches: 1
+               Buffers: shared read=4
+ Planning:
+   Buffers: shared hit=32 read=6
+ Planning Time: 0.269 ms
+ Execution Time: 0.386 ms
+(16 filas)
+
+                                                           QUERY PLAN                                                            
+---------------------------------------------------------------------------------------------------------------------------------
+ Index Scan using bench_note_pkey on bench_note  (cost=0.42..8.44 rows=1 width=272) (actual time=0.014..0.015 rows=1.00 loops=1)
+   Index Cond: (id = 100000)
+   Index Searches: 1
+   Buffers: shared hit=7
+ Planning:
+   Buffers: shared hit=5
+ Planning Time: 0.037 ms
+ Execution Time: 0.021 ms
+(8 filas)
+
+                                                                     QUERY PLAN                                                                      
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+ Nested Loop  (cost=0.84..16.94 rows=3 width=24) (actual time=0.045..0.046 rows=1.00 loops=1)
+   Buffers: shared hit=5 read=3
+   ->  Index Only Scan using bench_note_pkey on bench_note n  (cost=0.42..8.44 rows=1 width=8) (actual time=0.004..0.004 rows=1.00 loops=1)
+         Index Cond: (id = 100000)
+         Heap Fetches: 1
+         Index Searches: 1
+         Buffers: shared hit=4
+   ->  Index Scan using bench_finding_note_id_idx on bench_finding f  (cost=0.42..8.47 rows=3 width=24) (actual time=0.040..0.040 rows=1.00 loops=1)
+         Index Cond: (note_id = 100000)
+         Index Searches: 1
+         Buffers: shared hit=1 read=3
+ Planning:
+   Buffers: shared hit=12
+ Planning Time: 0.082 ms
+ Execution Time: 0.059 ms
+(15 filas)
+
+        what        |  size   
+--------------------+---------
+ jsonb table (heap) | 60 MB
+ GIN index          | 7488 kB
+ normalized table   | 55 MB
+(3 filas)
+
+INSERT 0 50000
+DROP INDEX
+INSERT 0 50000
+DROP TABLE

@@ -1,0 +1,57 @@
+HELP.md
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+/.jpb/
+
+### VS Code ###
+.vscode/
+
+.DS_Store
+
+### Entornos locales de Postman (contienen claves)
+postman/*.local.postman_*.json
+postman/local.postman_environment.json
+
+### Android (este archivo es del proyecto móvil, no del backend)
+local.properties
+
+### Carpetas que genera la app de Postman al abrir el repo (pueden contener claves)
+.postman/
+postman/environments/
+postman/globals/
+postman/collections/
+postman/documents/
+postman/flows/
+postman/mocks/
+postman/specs/
